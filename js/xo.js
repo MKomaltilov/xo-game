@@ -161,28 +161,22 @@ class Game {
 
     getDiagonals() {
         let diagonals = [];
-        // let diagonals = [[],[]];
-
-        // for(let x = 0; x < this.field.length; x++) {
-        //     diagonals[0].push(this.field[x][x].owner);            
-        // }
-
-        // for(let x = this.field.length - 1, y = 0; y < this.field.length; x--, y++) {
-        //     diagonals[1].push(this.field[x][y].owner); 
-        // }
-        
-        for(let x = 0; x < this.field.length; x++) {
-            let diagonal = []
-            for(let i = x; i < this.field.length; i++) {
-                //console.log(`[${i}][${i}]`)
-                diagonal.push(this.field[i][i].owner);
-            }
-            diagonals.push(diagonal);
+        for(let i = 0; i < this.field.length; i++) {
+            diagonals.push(this.diagonal(0, i, 1, 1));
+            diagonals.push(this.diagonal(0, i, 1, -1));
+            diagonals.push(this.diagonal(this.field.length - i, i, -1, 1));
+            diagonals.push(this.diagonal(this.field.length - i, i, -1, -1));
         }
-        
-        console.log(diagonals);
 
         return diagonals;
+    }
+
+    diagonal(startX, startY, stepX, stepY) {
+        let diagonal = [];
+        for (let i = startX, j = startY; i < this.field.length && i >= 0 && j < this.field.length && j >= 0; i += stepX, j += stepY) {
+		    diagonal.push(this.field[i][j].owner);
+	    }
+        return diagonal;
     }
 
     checkLine(line) {
