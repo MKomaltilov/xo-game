@@ -168,15 +168,37 @@ class Game {
         // for(let x = this.field.length - 1, y = 0; y < this.field.length; x--, y++) {
         //     diagonals[1].push(this.field[x][y].owner); 
         // }
-
-
+        
+        for(let x = 0; x < this.field.length; x++) {
+            let diagonal = []
+            for(let i = x; i < this.field.length; i++) {
+                console.log(`[${i}][${i}]`)
+                diagonal.push(this.field[i][i].owner);
+            }
+            diagonals.push(diagonal);
+        }
+        
+        console.log(diagonals);
 
         return diagonals;
     }
 
     checkLine(line) {
-        for(let cell of line.join('').split('none')) {
-            if(cell.length === this._cellsToWin) return true;
+        let counter = 0;
+        let lastItem;
+        for(let i in line) {
+            if(i === '0') {
+                lastItem = line[i];
+                counter++; 
+            } else {
+                if(lastItem === line[i] && line[i] !== 'none') {
+                    (counter == 0) ? counter+=2 : counter++;
+                    if(counter === this._cellsToWin) return true;
+                } else {
+                    counter = 0;
+                }
+                lastItem = line[i];
+            }
         }
         
         return false;
