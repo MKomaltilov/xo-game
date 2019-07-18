@@ -1,0 +1,25 @@
+.xo-row {
+    display: table;
+}
+
+.xo-cell {
+    display: table-cell;
+    border: 1px solid black;
+    width: 40px;
+    height: 30px;
+    text-align: center;
+    padding-top: 10px;
+}
+
+.xo-empty-field:hover {
+    cursor: pointer;
+    background-color: #909090;
+}
+
+.xo-settings {
+    margin-bottom: 5px;
+}
+
+.xo-start-button:hover {
+    cursor: pointer;
+}
