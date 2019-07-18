@@ -173,8 +173,8 @@ class Game {
 
     diagonal(startX, startY, stepX, stepY) {
         let diagonal = [];
-        for (let i = startX, j = startY; i < this.field.length && i >= 0 && j < this.field.length && j >= 0; i += stepX, j += stepY) {
-		    diagonal.push(this.field[i][j].owner);
+        for (let x = startX, y = startY; x < this.field.length && x >= 0 && y < this.field.length && y >= 0; x += stepX, y += stepY) {
+		    diagonal.push(this.field[x][y].owner);
 	    }
         return diagonal;
     }
