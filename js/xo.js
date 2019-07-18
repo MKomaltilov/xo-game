@@ -56,6 +56,8 @@ class Game {
             this.field = this.createField(this._minimumFieldSize);
             this._lastLaunchSize = this._minimumFieldSize;
         } 
+
+        (this._lastLaunchSize > 3) ? this._cellsToWin = 4 : this._cellsToWin = 3;
         
         this.player = 1;
         this.drawField();
@@ -172,7 +174,7 @@ class Game {
         for(let x = 0; x < this.field.length; x++) {
             let diagonal = []
             for(let i = x; i < this.field.length; i++) {
-                console.log(`[${i}][${i}]`)
+                //console.log(`[${i}][${i}]`)
                 diagonal.push(this.field[i][i].owner);
             }
             diagonals.push(diagonal);
